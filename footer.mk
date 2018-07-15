@@ -1,4 +1,4 @@
-OBJ += $(patsubst %.c, $(OBJDIR)/%.o,$(filter %.c,$(SRC)))
+OBJ := $(patsubst %.c, $(OBJDIR)/%.o,$(filter %.c,$(SRC)))
 OBJ += $(patsubst %.cpp, $(OBJDIR)/%.o,$(filter %.cpp,$(SRC)))
 OBJ += $(patsubst %.s, $(OBJDIR)/%.o,$(filter %.s,$(SRC)))
 OBJ += $(patsubst %.S, $(OBJDIR)/%.o,$(filter %.S,$(SRC)))
