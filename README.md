@@ -33,7 +33,7 @@ src
 + Doesn't required additional enviromental variables (like ```TOPDIR```, ```ROOTDIR```, etc)
 + Easy to use and configure
 + Run ```make``` in root folder to build whole project and link it
-+ Run ```make``` in module's folder to compile it
++ Run ```make``` in module folder to compile it
 + Cross-platform (Windows, Linux)
 
 ## How to use:
@@ -55,8 +55,6 @@ C_CPP_FLAGS :=
 CFLAGS :=
 CPPFLAGS :=
 AFLAGS :=
-
-#*******************************************************************************
 
 LIBDIR :=
 LIB :=
