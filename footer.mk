@@ -15,16 +15,16 @@ AFLAGS := $(strip $(GLOBAL_AFLAGS) $(AFLAGS))
 all: $(OBJ)
 
 clean:
-	if exist "$(OBJDIR)" rmdir /s /q "$(OBJDIR)"
+	$(call RMDIR,$(OBJDIR))
 
 $(OBJDIR)/%.o: %.c
-	@if not exist "$(@D)" mkdir "$(@D)"
+	@$(call MKDIR,$(@D))
 	$(CC) $(DEF) $(INC) $(C_CPP_FLAGS) $(CFLAGS) -c $^ -o $@
 
 $(OBJDIR)/%.o: %.cpp
-	@if not exist "$(@D)" mkdir "$(@D)"
+	@$(call MKDIR,$(@D))
 	$(CPP) $(DEF) $(INC) $(C_CPP_FLAGS) $(CPPFLAGS) -c $^ -o $@
 
 $(OBJDIR)/%.o: %.s %.S
-	@if not exist "$(@D)" mkdir "$(@D)"
+	@$(call MKDIR,$(@D))
 	$(AS) $(DEF) $(INC) $(AFLAGS) -c $^ -o $@

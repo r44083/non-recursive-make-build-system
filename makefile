@@ -21,7 +21,7 @@ $(eval ALL_LIB += $(addprefix -l,$(LIB)))
 $(eval ALL_LINKED_OBJ += $(addprefix $(module)/,$(LINKED_OBJ)))
 endef
 # Include module and save its SRC.o to OBJ for future linking (repeat for each module)
-$(foreach module,$(MODULES),$(call INCLUDE_MODULE,$(module)))
+$(foreach module,$(MODULES),$(eval $(call INCLUDE_MODULE,$(module))))
 
 LDFLAGS += $(strip $(ALL_LIBDIR))
 ALL_LIB := $(strip $(ALL_LIB))
@@ -40,11 +40,15 @@ endef
 all:
 	$(foreach module,$(MODULES),$(call COMPILE_MODULE,$(module)))
 	+$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory $(BIN)
+ifeq ($(OS),Windows_NT)
 	$(SIZE) $(BIN).exe
+else
+	$(SIZE) $(BIN)
+endif
 
 clean:
-	if exist "$(OUTDIR)" rmdir /s /q "$(OUTDIR)"
+	$(call RMDIR,$(OUTDIR))
 
 $(BIN): $(ALL_LINKED_OBJ) $(OBJ)
-	@if not exist "$(@D)" mkdir "$(@D)"
+	@$(call MKDIR,$(@D))
 	$(LD) $(LDFLAGS) $^ -o $@
