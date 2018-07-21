@@ -25,6 +25,10 @@ $(OBJDIR)/%.o: %.cpp
 	@$(call MKDIR,$(@D))
 	$(CPP) $(DEF) $(INC) $(C_CPP_FLAGS) $(CPPFLAGS) -c $^ -o $@
 
-$(OBJDIR)/%.o: %.s %.S
+$(OBJDIR)/%.o: %.s
+	@$(call MKDIR,$(@D))
+	$(AS) $(DEF) $(INC) $(AFLAGS) -c $^ -o $@
+
+$(OBJDIR)/%.o: %.S
 	@$(call MKDIR,$(@D))
 	$(AS) $(DEF) $(INC) $(AFLAGS) -c $^ -o $@
