@@ -1,3 +1,10 @@
+MODULES := src
+MODULES += src/a
+MODULES += src/b
+MODULES += src/b/c
+
+ROOT := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+
 GLOBAL_INC :=
 GLOBAL_DEF :=
 GLOBAL_C_CPP_FLAGS := -O0 -g3 -Wall
@@ -6,18 +13,11 @@ GLOBAL_CPPFLAGS := -std=c++17
 GLOBAL_AFLAGS :=
 LDFLAGS :=
 
-MODULES := src
-MODULES += src/a
-MODULES += src/b
-MODULES += src/b/c
-
 CC := gcc
 LD := gcc
 CPP := g++
 GDB := gdb
 SIZE := size
-
-ROOT := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
 OUTDIR := $(ROOT)/out
 # Relative path to module object folder
