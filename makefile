@@ -1,10 +1,5 @@
 include header.mk
 
-MODULES := src
-MODULES += src/a
-MODULES += src/b
-MODULES += src/b/c
-
 OBJ :=
 ALL_LIBDIR :=
 ALL_LIB :=
