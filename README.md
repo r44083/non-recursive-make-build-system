@@ -65,7 +65,7 @@ LINKED_OBJ :=
 -include ../footer.mk
 ```
 
-3. Add path to the new module in ```MODULES``` variable in root makefile
+3. Add path to the new module in ```MODULES``` variable in ```header.mk``` makefile
 ```
 MODULES := src
 MODULES += src/a
