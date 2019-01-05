@@ -7,10 +7,11 @@ ALL_LINKED_OBJ :=
 
 define INCLUDE_MODULE
 $(eval include $(module)/makefile)
-$(eval OBJ += $(patsubst %.c,$(OBJDIR)/$(module)/%.o,$(filter %.c,$(SRC))))
-$(eval OBJ += $(patsubst %.cpp,$(OBJDIR)/$(module)/%.o,$(filter %.cpp,$(SRC))))
-$(eval OBJ += $(patsubst %.s,$(OBJDIR)/$(module)/%.o,$(filter %.s,$(SRC))))
-$(eval OBJ += $(patsubst %.S,$(OBJDIR)/$(module)/%.o,$(filter %.S,$(SRC))))
+$(eval OBJ += $(patsubst %.c,$(OBJDIR)/$(module)/%.o,$(filter %.c,$(SRC))) \
+	$(patsubst %.cpp,$(OBJDIR)/$(module)/%.o,$(filter %.cpp,$(SRC))) \
+	$(patsubst %.s,$(OBJDIR)/$(module)/%.o,$(filter %.s,$(SRC))) \
+	$(patsubst %.S,$(OBJDIR)/$(module)/%.o,$(filter %.S,$(SRC))) \
+)
 $(eval ALL_LIBDIR += $(addprefix -L$(module)/,$(LIBDIR)))
 $(eval ALL_LIB += $(addprefix -l,$(LIB)))
 $(eval ALL_LINKED_OBJ += $(addprefix $(module)/,$(LINKED_OBJ)))

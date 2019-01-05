@@ -1,7 +1,7 @@
-OBJ := $(patsubst %.c, $(OBJDIR)/%.o,$(filter %.c,$(SRC)))
-OBJ += $(patsubst %.cpp, $(OBJDIR)/%.o,$(filter %.cpp,$(SRC)))
-OBJ += $(patsubst %.s, $(OBJDIR)/%.o,$(filter %.s,$(SRC)))
-OBJ += $(patsubst %.S, $(OBJDIR)/%.o,$(filter %.S,$(SRC)))
+OBJ := $(patsubst %.c, $(OBJDIR)/%.o,$(filter %.c,$(SRC))) \
+	$(patsubst %.cpp, $(OBJDIR)/%.o,$(filter %.cpp,$(SRC))) \
+	$(patsubst %.s, $(OBJDIR)/%.o,$(filter %.s,$(SRC))) \
+	$(patsubst %.S, $(OBJDIR)/%.o,$(filter %.S,$(SRC)))
 
 INC := $(addprefix -I,$(strip $(GLOBAL_INC) $(INC)))
 DEF := $(addprefix -D,$(strip $(GLOBAL_DEF) $(DEF)))
