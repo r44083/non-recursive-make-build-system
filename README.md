@@ -1,5 +1,5 @@
-# Recursive make build system
-Template (example) of recursive make build system
+# Non-recursive make build system
+Template with example of using painless non-recursive make build system.
 
 ## Existing project tree:
 ```
@@ -31,20 +31,20 @@ Template (example) of recursive make build system
 ```
 
 ## Features:
-+ Modular structure. Module is just subfolder with its own makefile
-+ Doesn't require additional enviromental variables (like ```TOPDIR```, ```ROOTDIR```, etc)
++ Modular structure. Module is just subfolder with its own makefile. The module can also have its own subfolders.
++ Doesn't require to maintain additional enviromental variables (like ```TOPDIR```, ```ROOTDIR```, etc)
 + Easy to use and configure
 + Run ```make``` in root folder to build whole project and link it
-+ Run ```make``` in module folder to compile it
++ Run ```make``` in module folder to build only this module
 + Cross-platform (Windows, Linux)
 
 ## How to use:
 1. Run ```make``` in root folder to build whole project and link it
 2. Find objects in ```out/obj``` folder
-3. Find artifacts in ```out/bin``` folder
+3. Find build artifacts in ```out/bin``` folder
 
 ## How to add new module:
-1. Create folder for new modul in projct
+1. Create folder for new module in project
 2. Copy-paste the following makefile to the root of new module folder:
 > Be aware of relative path in top and bottom "includes": path must be relative to the root of the project
 ```
