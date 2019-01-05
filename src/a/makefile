@@ -1,6 +1,9 @@
 -include ../../header.mk
 
-SRC := a-1.c a-2.c a-3/a-3.c
+SRC := a-1.c \
+	a-2.c \
+	a-3/a-3.c
+
 INC :=
 DEF :=
 C_CPP_FLAGS :=

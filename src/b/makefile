@@ -1,6 +1,8 @@
 -include ../../header.mk
 
-SRC := b-1.cpp b-2.c
+SRC := b-1.cpp \
+	b-2.c
+
 INC :=
 DEF :=
 C_CPP_FLAGS :=
