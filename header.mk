@@ -23,7 +23,7 @@ GLOBAL_AFLAGS :=
 LDFLAGS :=
 
 CC := gcc
-LD := gcc
+LD := g++
 CPP := g++
 GDB := gdb
 SIZE := size
