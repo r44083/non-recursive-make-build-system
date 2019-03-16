@@ -13,8 +13,8 @@ define COMPILE_MODULE
 	
 endef
 
-define COMPILE_MODULE
-	+$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module)
+define CLEAN_MODULE
+	@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module) clean
 	
 endef
 
@@ -32,6 +32,7 @@ else
 endif
 
 clean:
+	$(foreach module,$(MODULES),$(call CLEAN_MODULE,$(module)))
 	$(call RMDIR,$(OUTDIR))
 
 $(BIN): $(ALL_OBJ) $(ALL_LINKED_OBJ)

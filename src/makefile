@@ -31,6 +31,9 @@ ifneq ($(ROOT),.)
 
 all: $(OBJ)
 
+clean:
+	$(call RMDIR,$(OBJDIR))
+
 $(OBJDIR)/%.o: %.c
 	@$(call MKDIR,$(@D))
 	$(CC) $(DEF) $(INC) $(C_CPP_FLAGS) $(CFLAGS) -c $^ -o $@
