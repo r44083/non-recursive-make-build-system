@@ -9,11 +9,13 @@ $(eval ALL_LINKED_OBJ += $(addprefix $(module)/,$(LINKED_OBJ)))
 endef
 
 define COMPILE_MODULE
+	@echo --- Compile "$(module)":
 	@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module)
 	
 endef
 
 define CLEAN_MODULE
+	@echo --- Clean "$(module)":
 	@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module) clean
 	
 endef

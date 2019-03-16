@@ -23,12 +23,14 @@ GLOBAL_AFLAGS :=
 LDFLAGS :=
 
 CC := gcc
-LD := g++
 CPP := g++
+AS := gcc -x assembler-with-cpp
+LD := gcc
 GDB := gdb
 SIZE := size
 
 ifeq ($(OS),Windows_NT)
+
 define MKDIR
 	if not exist "$(1)" mkdir "$(1)"
 endef
@@ -38,14 +40,17 @@ endef
 define RM
 	del /q "$(1)" 2>nul
 endef
+
 else
+
 define MKDIR
 	mkdir -p "$(1)"
 endef
 define RMDIR
-	rm -rf "$(1)"
+	rm -r "$(1)"
 endef
 define RM
-	rf -f "$(1)"
+	rm "$(1)"
 endef
+
 endif
