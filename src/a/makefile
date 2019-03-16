@@ -1,4 +1,4 @@
--include ../../header.mk
+-include ../../config.mk
 
 SRC := a-1.c \
 	a-2.c \
