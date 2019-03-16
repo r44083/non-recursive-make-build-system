@@ -12,8 +12,6 @@ BINDIR := $(OUTDIR)/bin
 
 BIN := $(BINDIR)/$(notdir $(CURDIR))
 
-
-
 GLOBAL_INC :=
 GLOBAL_DEF :=
 GLOBAL_C_CPP_FLAGS := -O0 -g3 -Wall
