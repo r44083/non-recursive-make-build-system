@@ -3,10 +3,9 @@ Template with example of using painless non-recursive make build system.
 
 ## Existing project tree:
 ```
-|- footer.mk
-|- header.mk
+|- config.mk
 |- makefile
-+- src              << module main
++- src              << module src
    |- main.c
    |- makefile
    +- a             << module a
@@ -32,43 +31,27 @@ Template with example of using painless non-recursive make build system.
 
 ## Features:
 + Modular structure. Module is just subfolder with its own makefile. The module can also have its own subfolders.
-+ Doesn't require to maintain additional enviromental variables (like ```TOPDIR```, ```ROOTDIR```, etc)
++ Doesn't require additional enviromental variables (like ```TOPDIR```, ```ROOTDIR```, etc)
 + Easy to use and configure
-+ Run ```make``` in root folder to build whole project and link it
-+ Run ```make``` in module folder to build only this module
++ Run ```make``` or ```make clean``` in root folder to build/clean whole project
++ Run ```make``` or ```make clean``` in module folder to build/clean only this module
 + Cross-platform (Windows, Linux)
 
 ## How to use:
-1. Run ```make``` in root folder to build whole project and link it
-2. Find objects in ```out/obj``` folder
-3. Find build artifacts in ```out/bin``` folder
+1. Run ```make``` in root folder to build project
+2. Find build artifacts in ```out/bin``` folder
+3. Find objects in ```out/obj``` folder
+> If you need to add some specific build steps, do in under the ```all:``` target in module`s makefile
 
 ## How to add new module:
 1. Create folder for new module in project
-2. Copy-paste the following makefile to the root of new module folder:
-> Be aware of relative path in top and bottom "includes": path must be relative to the root of the project
+2. Copy-paste the module makefile to the root of new module folder.
+> Be aware of relative path to the ```config.mk``` on top of module's makefile: path must be relative to the root of the project
+
+3. Add path to the created module in ```MODULES``` variable in ```config.mk``` makefile:
 ```
--include ../header.mk
-
-SRC :=
-INC :=
-DEF :=
-C_CPP_FLAGS :=
-CFLAGS :=
-CPPFLAGS :=
-AFLAGS :=
-
-LIBDIR :=
-LIB :=
-LINKED_OBJ :=
-
--include ../footer.mk
-```
-
-3. Add path to the new module in ```MODULES``` variable in ```header.mk``` makefile
-```
-MODULES := src
-MODULES += src/a
-MODULES += src/b
-MODULES += <path to the new module>
+MODULES := src \
+    src/a \
+    src/b \
+    <path to new module>
 ```
