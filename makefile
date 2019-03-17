@@ -22,7 +22,9 @@ endef
 
 # Collect prerequisites from modules for linkage
 $(foreach module,$(MODULES),$(call INCLUDE_MODULE,$(module)))
+ALL_LIBDIR := $(strip $(ALL_LIBDIR))
 ALL_LIB := $(strip $(ALL_LIB))
+ALL_LINKED_OBJ := $(strip $(ALL_LINKED_OBJ))
 
 all:
 	$(foreach module,$(MODULES),$(call COMPILE_MODULE,$(module)))
