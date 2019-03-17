@@ -9,15 +9,15 @@ $(eval ALL_LINKED_OBJ += $(addprefix $(module)/,$(LINKED_OBJ)))
 endef
 
 define COMPILE_MODULE
-	@echo --- Compile "$(module)":
-	@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module)
-	
+@echo --- Compile "$(module)":
+@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module)
+
 endef
 
 define CLEAN_MODULE
-	@echo --- Clean "$(module)":
-	@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module) clean
-	
+@echo --- Clean "$(module)":
+@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(module) clean
+
 endef
 
 # Collect prerequisites from modules for linkage
@@ -38,6 +38,7 @@ clean:
 	$(call RMDIR,$(OUTDIR))
 
 $(BIN): $(ALL_OBJ) $(ALL_LINKED_OBJ)
+	@echo --- Linking "$(BIN)":
 	@$(call MKDIR,$(@D))
 ifeq ($(ALL_LIB),)
 	$(LD) $(LDFLAGS) $^ -o $@

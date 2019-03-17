@@ -1,7 +1,7 @@
-MODULES := src
-MODULES += src/a
-MODULES += src/b
-MODULES += src/b/c
+MODULES := src \
+	src/a\
+	src/b \
+	src/b/c
 
 ROOT := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
@@ -30,25 +30,31 @@ SIZE := size
 ifeq ($(OS),Windows_NT)
 
 define MKDIR
-	if not exist "$(1)" mkdir "$(1)"
+@if not exist "$(1)" mkdir "$(1)"
+
 endef
 define RMDIR
-	if exist "$(1)" rmdir /s /q "$(1)"
+@if exist "$(1)" rmdir /s /q "$(1)"
+
 endef
 define RM
-	del /q "$(1)" 2>nul
+@del /q "$(1)" 2>nul
+
 endef
 
 else
 
 define MKDIR
-	mkdir -p "$(1)"
+@mkdir -p "$(1)"
+
 endef
 define RMDIR
-	rm -r "$(1)"
+@rm -r "$(1)"
+
 endef
 define RM
-	rm "$(1)"
+@rm "$(1)"
+
 endef
 
 endif
