@@ -29,7 +29,7 @@ CFLAGS := $(strip $(GLOBAL_CFLAGS) $(CFLAGS))
 CPPFLAGS := $(strip $(GLOBAL_CPPFLAGS) $(CPPFLAGS))
 AFLAGS := $(strip $(GLOBAL_AFLAGS) $(AFLAGS))
 
-# Prevent including the part below to main makefile
+# Prevent including this part to main makefile
 ifneq ($(ROOT),.)
 
 all: $(OBJ)
@@ -37,20 +37,20 @@ all: $(OBJ)
 clean:
 	$(call RMDIR,$(OBJDIR))
 
-$(OBJDIR)/%.o: %.c
-	@$(call MKDIR,$(@D))
+.SECONDEXPANSION:
+$(OBJDIR)/%.o: %.c | $$(@D)/.f
 	$(CC) $(DEF) $(INC) $(C_CPP_FLAGS) $(CFLAGS) -c $^ -o $@
 
-$(OBJDIR)/%.o: %.cpp
-	@$(call MKDIR,$(@D))
+$(OBJDIR)/%.o: %.cpp | $$(@D)/.f
 	$(CPP) $(DEF) $(INC) $(C_CPP_FLAGS) $(CPPFLAGS) -c $^ -o $@
 
-$(OBJDIR)/%.o: %.s
-	@$(call MKDIR,$(@D))
+$(OBJDIR)/%.o: %.s | $$(@D)/.f
 	$(AS) $(DEF) $(INC) $(AFLAGS) -c $^ -o $@
 
-$(OBJDIR)/%.o: %.S
-	@$(call MKDIR,$(@D))
+$(OBJDIR)/%.o: %.S | $$(@D)/.f
 	$(AS) $(DEF) $(INC) $(AFLAGS) -c $^ -o $@
+
+%/.f:
+	$(call MKDIR,$(dir $@))
 
 endif
