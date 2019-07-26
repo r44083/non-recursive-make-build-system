@@ -11,9 +11,11 @@
             "cwd": "${workspaceFolder}",
             "miDebuggerPath": "gdb.exe",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
-            "setupCommands": [
+            "preLaunchTask": "make",
+            "setupCommands":
+            [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
