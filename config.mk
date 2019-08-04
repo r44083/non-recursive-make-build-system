@@ -23,7 +23,7 @@ LDFLAGS :=
 CC := gcc
 CPP := g++
 AS := gcc -x assembler-with-cpp
-LD := gcc
+LD := g++
 GDB := gdb
 SIZE := size
 
