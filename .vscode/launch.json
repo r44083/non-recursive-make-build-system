@@ -1,8 +1,9 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations":
+    [
         {
-            "name": "(gdb) Launch",
+            "name": "gdb",
             "type": "cppdbg",
             "request": "launch",
             "windows":
@@ -15,9 +16,10 @@
                 "program": "${workspaceFolder}/out/bin/${workspaceRootFolderName}",
                 "miDebuggerPath": "gdb"
             },
-            "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "externalConsole": true,
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": true,
             "preLaunchTask": "make",
             "setupCommands":
             [
