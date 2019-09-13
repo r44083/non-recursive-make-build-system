@@ -40,8 +40,8 @@ Template with example of using painless non-recursive make build system.
 
 ## How to use:
 1. Run ```make``` in root folder to build project
-2. Find build artifacts in ```out/bin``` folder
-3. Find objects in ```out/obj``` folder
+2. Find build artifacts in ```build/bin``` folder
+3. Find objects in ```build/obj``` folder
 > If you need to add some specific build steps, do in under the ```all:``` target in module`s makefile
 
 ## How to add new module:

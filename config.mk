@@ -5,7 +5,7 @@ MODULES := src \
 
 ROOT := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
-OUTDIR := $(ROOT)/out
+OUTDIR := $(ROOT)/build
 # Relative path to module object folder
 OBJDIR := $(OUTDIR)/obj$(patsubst $(abspath $(ROOT))%,%,$(CURDIR))
 BINDIR := $(OUTDIR)/bin
