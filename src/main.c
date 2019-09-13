@@ -1,10 +1,8 @@
-
 #include <stdio.h>
-
 #include "a/a-1.h"
 #include "a/a-2.h"
 #include "a/a-3/a-3.h"
-#include "b/b-1.h"
+#include "b/b-1.hpp"
 #include "b/b-2.h"
 #include "b/c/c-1.h"
 

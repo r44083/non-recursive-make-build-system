@@ -19,7 +19,7 @@ Template with example of using painless non-recursive make build system.
    |     +- a-3.h
    +- b             << module b
       |- b-1.cpp
-      |- b-1.h
+      |- b-1.hpp
       |- b-2.c
       |- b-2.h
       |- makefile
@@ -32,6 +32,7 @@ Template with example of using painless non-recursive make build system.
 ## Features:
 + Modular structure. Module is just subfolder with its own makefile. The module can also have its own subfolders.
 + Doesn't require additional enviromental variables (like ```TOPDIR```, ```ROOTDIR```, etc)
++ Handles header dependencies
 + Easy to use and configure
 + Run ```make``` or ```make clean``` in root folder to build/clean whole project
 + Run ```make``` or ```make clean``` in module folder to build/clean only this module
