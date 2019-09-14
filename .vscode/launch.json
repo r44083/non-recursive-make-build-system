@@ -8,12 +8,12 @@
             "request": "launch",
             "windows":
             {
-                "program": "${workspaceFolder}/out/bin/${workspaceRootFolderName}.exe",
+                "program": "${workspaceFolder}/build/bin/${workspaceRootFolderName}.exe",
                 "miDebuggerPath": "gdb.exe"
             },
             "linux":
             {
-                "program": "${workspaceFolder}/out/bin/${workspaceRootFolderName}",
+                "program": "${workspaceFolder}/build/bin/${workspaceRootFolderName}",
                 "miDebuggerPath": "gdb"
             },
             "cwd": "${workspaceFolder}",
