@@ -8,8 +8,8 @@ $(eval ALL_LIB += $(addprefix -l,$(LIB)))
 $(eval ALL_LINKED_OBJ += $(addprefix $(1)/,$(LINKED_OBJ)))
 endef
 
-define COMPILE_MODULE
-@echo --- Compile "$(1)":
+define BUILD_MODULE
+@echo --- Build "$(1)":
 @$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory -C $(1)
 
 endef
@@ -20,14 +20,14 @@ define CLEAN_MODULE
 
 endef
 
-# Collect prerequisites from modules for linkage
+# Collect prerequisites from modules
 $(foreach module,$(MODULES),$(eval $(call INCLUDE_MODULE,$(module))))
 ALL_LIBDIR := $(strip $(ALL_LIBDIR))
 ALL_LIB := $(sort $(ALL_LIB))
 ALL_LINKED_OBJ := $(strip $(ALL_LINKED_OBJ))
 
 all:
-	$(foreach module,$(MODULES),$(call COMPILE_MODULE,$(module)))
+	$(foreach module,$(MODULES),$(call BUILD_MODULE,$(module)))
 	@$(MAKE) -j $(NUMBER_OF_PROCESSORS) --no-print-directory $(BIN)
 ifeq ($(OS),Windows_NT)
 	$(SIZE) $(BIN).exe
