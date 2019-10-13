@@ -19,8 +19,7 @@ GLOBAL_C_CPP_FLAGS := -O0 -g3 -Wall
 GLOBAL_CFLAGS := -std=c99
 GLOBAL_CPPFLAGS := -std=c++17
 GLOBAL_AFLAGS := -g3
-LDFLAGS := -Wl,--Map="$(MAP)" \
-	-Wl,--cref
+LDFLAGS := -Wl,--Map="$(MAP)",--cref
 
 CC := gcc
 CPP := g++
