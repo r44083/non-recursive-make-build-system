@@ -1,6 +1,6 @@
 -include ../config.mk
 
-SRC := main.c
+SRC := main.cpp
 INC :=
 DEF :=
 C_CPP_FLAGS :=
