@@ -11,6 +11,7 @@ OBJDIR := $(BUILDDIR)/obj$(patsubst $(abspath $(ROOT))%,%,$(CURDIR))
 BINDIR := $(BUILDDIR)/bin
 
 BIN := $(BINDIR)/$(notdir $(CURDIR))
+MAP := $(BUILDDIR)/$(notdir $(CURDIR)).map
 
 GLOBAL_INC :=
 GLOBAL_DEF :=
@@ -18,7 +19,8 @@ GLOBAL_C_CPP_FLAGS := -O0 -g3 -Wall
 GLOBAL_CFLAGS := -std=c99
 GLOBAL_CPPFLAGS := -std=c++17
 GLOBAL_AFLAGS := -g3
-LDFLAGS :=
+LDFLAGS := -Wl,--Map="$(MAP)" \
+	-Wl,--cref
 
 CC := gcc
 CPP := g++
