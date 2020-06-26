@@ -16,7 +16,7 @@
                 "program": "${workspaceFolder}/build/bin/${workspaceRootFolderName}",
                 "miDebuggerPath": "gdb"
             },
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/build/bin",
             "externalConsole": true,
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": true,
